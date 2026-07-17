@@ -26,7 +26,7 @@ void Title::update()
 
 void Title::draw()
 {
-	
+	DrawString(0, 0, "title", GetColor(255, 255, 255));
 }
 
 void Title::proceed()

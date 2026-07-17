@@ -72,6 +72,9 @@
     <ClCompile Include="Collidermanager.cpp">
       <Filter>ソース ファイル\collider</Filter>
     </ClCompile>
+    <ClCompile Include="Crystal.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DxLibForIreven.h">
@@ -133,6 +136,9 @@
     </ClInclude>
     <ClInclude Include="ColliderManager.h">
       <Filter>ヘッダー ファイル\collider</Filter>
+    </ClInclude>
+    <ClInclude Include="Crystal.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,4 +1,14 @@
 #pragma once
+#include<memory>
+
+class Crystal;
+
+enum class fireAngle
+{
+	RIGHT,
+	LEFT,
+	STREET
+};
 
 class Player
 {
@@ -11,5 +21,7 @@ public:
 	void draw();
 
 private:
-
+	VECTOR position_;
+	int currentFireAngleType_;
+	std::shared_ptr<Crystal> crystal_;
 };

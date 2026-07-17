@@ -2,6 +2,9 @@
 #include"IScene.h"
 #include"SceneBase.h"
 #include"SceneContext.h"
+#include<memory>
+
+class Player;
 
 class Battle : public SceneBase<SceneContext>
 {
@@ -17,4 +20,6 @@ public:
 
 private:
 	void proceed();
+
+	std::shared_ptr<Player> player_;
 };
