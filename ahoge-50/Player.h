@@ -21,7 +21,12 @@ public:
 	void draw();
 
 private:
+	void changeFireAngle();
+	void fire();
+	void move();
+
 	VECTOR position_;
 	int currentFireAngleType_;
 	std::shared_ptr<Crystal> crystal_;
+	bool canFire_;
 };

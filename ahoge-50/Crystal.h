@@ -10,7 +10,8 @@ public:
 	void init();
 	void update();
 	void draw();
-	void decideMoveVector();
+	void decideMoveVector(const VECTOR direction);
+	void setPosition(const VECTOR position);
 
 	const VECTOR getSpherePosition()const noexcept { return position_; }
 	const float	getRadius()const noexcept { return collider_radius; }

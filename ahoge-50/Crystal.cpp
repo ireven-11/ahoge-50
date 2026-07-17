@@ -40,7 +40,12 @@ void Crystal::draw()
     MV1DrawModel(modelHandle_);
 }
 
-void Crystal::decideMoveVector()
+void Crystal::decideMoveVector(const VECTOR direction)
 {
 
+}
+
+void Crystal::setPosition(const VECTOR position)
+{
+    position_ = position;
 }
