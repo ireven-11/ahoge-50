@@ -6,6 +6,10 @@ public:
 	Player();
 	~Player();
 
+	void init();
+	void update();
+	void draw();
+
 private:
 
 };

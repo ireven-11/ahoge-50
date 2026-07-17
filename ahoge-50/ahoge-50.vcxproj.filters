@@ -31,6 +31,9 @@
     <Filter Include="ヘッダー ファイル\collider">
       <UniqueIdentifier>{d4af25df-a67f-4adb-ab5b-eb6e6a445207}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\collider">
+      <UniqueIdentifier>{74ae2737-c08a-499a-a4bb-4336b39b7656}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -65,6 +68,9 @@
     </ClCompile>
     <ClCompile Include="Timer.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Collidermanager.cpp">
+      <Filter>ソース ファイル\collider</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -123,6 +129,9 @@
       <Filter>ヘッダー ファイル\collider</Filter>
     </ClInclude>
     <ClInclude Include="ISphereCollider.h">
+      <Filter>ヘッダー ファイル\collider</Filter>
+    </ClInclude>
+    <ClInclude Include="ColliderManager.h">
       <Filter>ヘッダー ファイル\collider</Filter>
     </ClInclude>
   </ItemGroup>

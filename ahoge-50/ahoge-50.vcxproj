@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="Battle.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Collidermanager.cpp" />
     <ClCompile Include="FPS.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="InputHandler.cpp" />
@@ -142,6 +143,7 @@
   <ItemGroup>
     <ClInclude Include="Battle.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="ColliderManager.h" />
     <ClInclude Include="DxLibForIreven.h" />
     <ClInclude Include="FPS.h" />
     <ClInclude Include="Game.h" />
