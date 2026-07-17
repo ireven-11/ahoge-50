@@ -28,6 +28,9 @@
     <Filter Include="ヘッダー ファイル\camera">
       <UniqueIdentifier>{db38a2c7-baec-4846-8511-b8a44c8a8dee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\collider">
+      <UniqueIdentifier>{d4af25df-a67f-4adb-ab5b-eb6e6a445207}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -112,6 +115,15 @@
     </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ICapsuleCollider.h">
+      <Filter>ヘッダー ファイル\collider</Filter>
+    </ClInclude>
+    <ClInclude Include="ICuboidCollider.h">
+      <Filter>ヘッダー ファイル\collider</Filter>
+    </ClInclude>
+    <ClInclude Include="ISphereCollider.h">
+      <Filter>ヘッダー ファイル\collider</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
