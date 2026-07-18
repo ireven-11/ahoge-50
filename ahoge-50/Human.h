@@ -17,15 +17,20 @@ public:
 private:
 	void move();
 	void respawn();
+	void anim();
 
 	VECTOR position_;
 	bool isRightMove_;
-	int modelHandle_;
-	int humanHandle_;
 	float speed_;
+	float currentAnimCount_;
+	int attachAnimIndex_;
+	float maxPlayingAnimSpeed_;
+	int modelHandle_;
+	static int humanHandle_;
 
-	const float collider_radius = 1.0f;
+	const float collider_radius = 2.0f;
 	const float init_position_x = 50.0f;
 	const int	random_position_z = 30;
 	const int	random_speed = 5;
+	const float playing_anim_speed = 0.2f;
 };
