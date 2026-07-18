@@ -9,10 +9,16 @@
 Result::Result(const std::shared_ptr<SceneContext>& context)
 	:SceneBase(context)
 {
+	badEndGraph_ = LoadGraph("graph/badEnd.png");
+	happyEndGraph_ = LoadGraph("graph/happyEnd.png");
+	backGraph_ = LoadGraph("graph/backGraph.jpg");
 }
 
 Result::~Result()
 {
+	DeleteGraph(badEndGraph_);
+	DeleteGraph(happyEndGraph_);
+	DeleteGraph(backGraph_);
 }
 
 void Result::init()
@@ -27,7 +33,16 @@ void Result::update()
 
 void Result::draw()
 {
-	DrawString(0, 0, "Result", GetColor(255, 255, 255));
+	DrawExtendGraph(0, 0, init_screen_width, init_screen_height, backGraph_, true);
+
+	if (context()->getScore()->getCurrentScore() <= 0)
+	{
+		DrawRotaGraphF(init_screen_width * 0.5f, init_screen_height * 0.5f, 1.0, 0.0, badEndGraph_, true);
+	}
+	else
+	{
+		DrawRotaGraphF(init_screen_width * 0.5f, init_screen_height * 0.5f, 1.0, 0.0, happyEndGraph_, true);
+	}
 }
 
 void Result::proceed()

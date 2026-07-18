@@ -49,12 +49,13 @@ void Battle::init()
 
 void Battle::update()
 {
-	timer_->update();
 	if (timer_->hasFinishedCountDown())
 	{
 		proceed();
 		return;
 	}
+
+	timer_->update();
 
 	for (const auto& human : humans_)
 	{

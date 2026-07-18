@@ -14,6 +14,8 @@ public:
 	void decrease(const int value);
 	void draw();
 
+	int getCurrentScore()const noexcept { return currentScore_; }
+
 private:
 	int currentScore_;
 };

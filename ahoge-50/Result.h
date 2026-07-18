@@ -18,4 +18,8 @@ public:
 
 private:
 	void proceed();
+
+	int badEndGraph_;
+	int happyEndGraph_;
+	int backGraph_;
 };
