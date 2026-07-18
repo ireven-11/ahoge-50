@@ -2,14 +2,20 @@
 #include"Player.h"
 #include"Human.h"
 #include"ColliderManager.h"
+#include"Timer.h"
 #include"Battle.h"
 #include"Camera.h"
 
 Battle::Battle(const std::shared_ptr<SceneContext> context)
 	: SceneBase(context),
 	player_(std::make_shared<Player>()),
-	collider_(std::make_unique<ColliderManager>())
+	collider_(std::make_unique<ColliderManager>()),
+	timer_(std::make_shared<Timer>())
 {
+	skydome_ = MV1LoadModel("3dmodel/skydome/town.pmx");
+	MV1SetScale(skydome_, VGet(map_scale, map_scale, map_scale));
+	MV1SetRotationXYZ(skydome_, VGet(0.0f, 0.0f, 0.0f));
+
 	for (size_t i = 0; i < human_value; i++)
 	{
 		humans_.emplace_back(std::make_shared<Human>());
@@ -20,18 +26,26 @@ Battle::Battle(const std::shared_ptr<SceneContext> context)
 
 Battle::~Battle()
 {
+	MV1DeleteModel(skydome_);
 	humans_.clear();
 	player_ = nullptr;
 	collider_ = nullptr;
+	timer_ = nullptr;
 }
 
 void Battle::init()
 {
+	score_ = 0;
 	player_->init();
+	timer_->init();
+	timer_->startCountDown(60, 0);
 }
 
 void Battle::update()
 {
+	timer_->update();
+	if (timer_->hasFinishedCountDown()) return;
+
 	for (const auto& human : humans_)
 	{
 		human->update();
@@ -39,23 +53,27 @@ void Battle::update()
 
 	player_->update();
 
-	collider_->update(humans_, player_);
+	collider_->update(humans_, player_, context()->getScore());
 
 	context()->getCamera()->update();
+
+	MV1SetPosition(skydome_, VGet(0.0f, 0.0f, 0.0f));
 }
 
 void Battle::draw()
 {
-	DrawGrid(100.0f, 10.0f, GetColor(25, 25, 225));
+	MV1DrawModel(skydome_);
 
 	for (const auto& human : humans_)
 	{
 		human->draw();
 	}
 
-	DrawString(0, 0, "battle", GetColor(255, 255, 255));
-
 	player_->draw();
+
+	timer_->draw();
+
+	context()->getScore()->draw();
 }
 
 void Battle::proceed()

@@ -8,6 +8,7 @@
 class Player;
 class Human;
 class ColliderManager;
+class Timer;
 
 class Battle : public SceneBase<SceneContext>
 {
@@ -20,13 +21,17 @@ public:
 	void draw();
 	void enter();
 	void exit();
-
+	
 private:
 	void proceed();
 
+	int skydome_;
+	int score_;
 	std::shared_ptr<Player> player_;
 	std::vector<std::shared_ptr<Human>> humans_;
 	std::unique_ptr<ColliderManager> collider_;
+	std::shared_ptr<Timer> timer_;
 
 	const char human_value = 10;
+	const float map_scale = 0.2f;
 };
