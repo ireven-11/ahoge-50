@@ -62,7 +62,7 @@ void Human::draw()
 {
 	MV1DrawModel(modelHandle_);
 
-	DrawSphere3D(position_, collider_radius, 8, GetColor(255, 255, 255), GetColor(255, 255, 255), false);
+	//DrawSphere3D(position_, collider_radius, 8, GetColor(255, 255, 255), GetColor(255, 255, 255), false);
 }
 
 void Human::move()
