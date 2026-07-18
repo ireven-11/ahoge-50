@@ -26,12 +26,14 @@ Crystal::~Crystal()
 void Crystal::init()
 {
     position_ = VGet(0.0f, 0.0f, 0.0f);
-    movePosition_ = VGet(0.0f, 0.0f, 0.0f);
+    moveDirection_ = VGet(0.0f, 0.0f, 0.0f);
     speed_ = 0.0f;
 }
 
 void Crystal::update()
 {
+    move();
+
     MV1SetPosition(modelHandle_, position_);
 }
 
@@ -40,12 +42,26 @@ void Crystal::draw()
     MV1DrawModel(modelHandle_);
 }
 
-void Crystal::decideMoveVector(const VECTOR direction)
+void Crystal::decideMoveDirection(const VECTOR direction)
 {
-
+    moveDirection_ = direction;
 }
 
 void Crystal::setPosition(const VECTOR position)
 {
     position_ = position;
+}
+
+void Crystal::setFireSpeed(const float fireSpeed)
+{
+    speed_ = fireSpeed;
+}
+
+void Crystal::move()
+{
+    if (speed_ <= 0.0f) return;
+
+    speed_ -= deceleration_rate;
+    VECTOR moveVector = VScale(moveDirection_, speed_);
+    VAdd(position_, moveVector);
 }

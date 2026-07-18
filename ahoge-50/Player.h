@@ -24,9 +24,15 @@ private:
 	void changeFireAngle();
 	void fire();
 	void move();
+	void reloadCrystal();
 
 	VECTOR position_;
 	int currentFireAngleType_;
 	std::shared_ptr<Crystal> crystal_;
 	bool canFire_;
+	int firePower_;
+	bool isCountUpFirePower_;
+
+	const int max_fire_power = 100;
+	const int minimum_fire_power = 0;
 };
