@@ -28,6 +28,7 @@ void Crystal::init()
     position_ = VGet(0.0f, 0.0f, 0.0f);
     moveDirection_ = VGet(0.0f, 0.0f, 0.0f);
     speed_ = 0.0f;
+    isMoving_ = false;
 }
 
 void Crystal::update()
@@ -59,9 +60,14 @@ void Crystal::setFireSpeed(const float fireSpeed)
 
 void Crystal::move()
 {
-    if (speed_ <= 0.0f) return;
+    if (!isMoving_) return;
 
     speed_ -= deceleration_rate;
     VECTOR moveVector = VScale(moveDirection_, speed_);
     VAdd(position_, moveVector);
+}
+
+void Crystal::startFire()
+{
+    isMoving_ = true;
 }

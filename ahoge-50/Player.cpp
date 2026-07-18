@@ -7,6 +7,7 @@
 Player::Player()
     :crystal_(std::make_shared<Crystal>())
 {
+    init();
 }
 
 Player::~Player()
@@ -31,6 +32,7 @@ void Player::update()
     {
         crystal_->setPosition(position_);
         changeFireAngle();
+        chargeFirePower();
         fire();
     }
 
@@ -76,7 +78,7 @@ void Player::changeFireAngle()
     }
 }
 
-void Player::fire()
+void Player::chargeFirePower()
 {
     if (!InputHandler::instance().getKeyInput()->getKeyHoldNow(KEY_INPUT_SPACE, 0)) return;
 
@@ -99,10 +101,15 @@ void Player::fire()
         }
     }
 
+    crystal_->setFireSpeed(static_cast<float>(firePower_));
+}
+
+void Player::fire()
+{
     if (!InputHandler::instance().getKeyInput()->getKeyReleasedMoment(KEY_INPUT_SPACE)) return;
 
     canFire_ = false;
-    
+    crystal_->startFire();
 }
 
 void Player::reloadCrystal()

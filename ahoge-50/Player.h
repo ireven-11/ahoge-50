@@ -22,6 +22,7 @@ public:
 
 private:
 	void changeFireAngle();
+	void chargeFirePower();
 	void fire();
 	void move();
 	void reloadCrystal();

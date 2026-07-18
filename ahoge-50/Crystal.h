@@ -13,6 +13,7 @@ public:
 	void decideMoveDirection(const VECTOR direction);
 	void setPosition(const VECTOR position);
 	void setFireSpeed(const float fireSpeed);
+	void startFire();
 
 	const VECTOR getSpherePosition()const noexcept { return position_; }
 	const float	getRadius()const noexcept { return collider_radius; }
@@ -23,6 +24,7 @@ private:
 	VECTOR position_;
 	VECTOR moveDirection_;
 	float speed_;
+	bool isMoving_;
 	int modelHandle_;
 	static int crystalHandle_;
 
