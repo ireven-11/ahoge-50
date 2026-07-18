@@ -36,5 +36,5 @@ private:
 	const float model_scale = 0.5f;
 	const float collider_radius = 3.0f;
 	const float rotation_speed = 0.5f;
-	const float deceleration_rate = 0.95f;
+	const float deceleration_rate = 0.925f;
 };
