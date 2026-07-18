@@ -419,30 +419,41 @@ inline VECTOR RotationVectorY(VECTOR& vector, const double rotationAngle)
 }
 
 /// <summary>
-/// 座標を上下移動させる
+/// 一定速度で上下移動させる
 /// </summary>
-/// <param name="positionY">移動させるy座標</param>
-/// <param name="amplitude">上下移動の振れ幅</param>
-/// <param name="period">上下移動の間隔</param>
-/// <returns></returns>
-inline float UpDownPositionY(float positionY, const float amplitude = 1.0f, const float period = 1.0f)
+/// <param name="baseY">基準Y座標</param>
+/// <param name="speed">移動速度(px/frame)</param>
+/// <param name="amplitude">振れ幅</param>
+/// <returns>移動後のY座標</returns>
+inline float UpDownPositionY(float positionY, const float speed = 0.5f, const float amplitude = 10.0f)
 {
-	//上下移動失敗
-	if (period == 0.0f) return -1.0f;
+	static float offset = 0.0f;
+	static bool isUp = true;
 
-	//角度法で処理する
-	static	float rad = 0.0f;
-	const	float add_rad = 10.0f;
-	rad += add_rad;
-	if (rad > 360.0f)
+	if (isUp)
 	{
-		rad = 0.0f;
+		offset += speed;
+
+		if (offset >= amplitude)
+		{
+			offset = amplitude;
+			isUp = false;
+		}
+	}
+	else
+	{
+		offset -= speed;
+
+		if (offset <= -amplitude)
+		{
+			offset = -amplitude;
+			isUp = true;
+		}
 	}
 
-	//sinfで移動
-	positionY += sinf(rad / period) * amplitude;
-	return positionY;
+	return positionY + offset;
 }
+
 
 /// <summary>
 /// モデルのすべてのボーンを保存する
