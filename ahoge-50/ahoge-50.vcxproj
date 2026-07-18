@@ -133,6 +133,7 @@
     <ClCompile Include="Crystal.cpp" />
     <ClCompile Include="FPS.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Human.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="KeyInput.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -149,6 +150,7 @@
     <ClInclude Include="DxLibForIreven.h" />
     <ClInclude Include="FPS.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Human.h" />
     <ClInclude Include="ICapsuleCollider.h" />
     <ClInclude Include="ICuboidCollider.h" />
     <ClInclude Include="InputHandler.h" />
