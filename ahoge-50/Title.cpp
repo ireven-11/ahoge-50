@@ -4,6 +4,7 @@
 #include"InputHandler.h"
 #include"KeyInput.h"
 #include"Mouse.h"
+#include"Score.h"
 
 Title::Title(const std::shared_ptr<SceneContext>& context)
 	:SceneBase(context)
@@ -38,10 +39,10 @@ void Title::proceed()
 
 void Title::enter()
 {
-
+	context()->getScore()->init();
 }
 
 void Title::exit()
 {
-
+	context()->getScore()->init();
 }

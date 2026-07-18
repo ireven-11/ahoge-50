@@ -40,7 +40,7 @@ void Timer::update()
 
 void Timer::draw()
 {
-	DrawFormatString(0, 50, GetColor(255, 25, 25), "クリアまで：%d", currentSeconds_);	//てすと
+	DrawFormatString(0, 50, GetColor(255, 25, 25), "クリアまで：%d", currentSeconds_);
 }
 
 void Timer::startCountDown(const int startSecondsCount, const int finishSecondsCount)

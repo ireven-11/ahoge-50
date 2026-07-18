@@ -1,6 +1,8 @@
 #pragma once
 #include"ISphereCollider.h"
 
+constexpr float strong_speed = 5.0f;
+
 class Crystal : public ISphereCollider
 {
 public:
@@ -18,7 +20,7 @@ public:
 	const VECTOR getSpherePosition()const noexcept { return position_; }
 	const float	getRadius()const noexcept { return collider_radius; }
 	const bool getIsMoving()const noexcept { return isMoving_; }
-	const bool getSpeed()const noexcept { return speed_; }
+	const float getSpeed()const noexcept { return speed_; }
 
 private:
 	void move();

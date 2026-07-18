@@ -29,7 +29,7 @@ void Camera::init()
 
 void Camera::update()
 {
-	SetCameraNearFar(1.00f, 200.00f);
+	SetCameraNearFar(1.00f, 500.00f);
 
 	//ƒJƒƒ‰‚Ì’‹“_‚ğİ’è
 	SetCameraPositionAndTarget_UpVecY(position_, targetPosition_);
