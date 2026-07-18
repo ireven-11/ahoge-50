@@ -24,8 +24,7 @@ public:
 
 private:
 	void move();
-	void rotation();
-
+	
 	VECTOR position_;
 	VECTOR moveDirection_;
 	float speed_;
