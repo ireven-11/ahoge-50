@@ -40,7 +40,7 @@ void Battle::init()
 {
 	player_->init();
 	timer_->init();
-	timer_->startCountDown(60, 0);
+	timer_->startCountDown(5, 0);
 	for (const auto& human : humans_)
 	{
 		human->init();
@@ -49,11 +49,7 @@ void Battle::init()
 
 void Battle::update()
 {
-	if (timer_->hasFinishedCountDown())
-	{
-		proceed();
-		return;
-	}
+	if (timer_->hasFinishedCountDown()) return;
 
 	timer_->update();
 
@@ -87,11 +83,22 @@ void Battle::draw()
 	gageUI();
 
 	context()->getScore()->draw();
+
+	if (timer_->hasFinishedCountDown())
+	{
+		SetFontSize(150);
+		DrawString(700, 400, "FINISH!!", GetColor(225, 25, 25));
+
+		SetFontSize(50);
+		DrawString(600, UpDownPositionY(600), "press Enter to proceed result", GetColor(25, 25, 25));
+	}
 }
 
 void Battle::proceed()
 {
 	if (!InputHandler::instance().getKeyInput()->getKeyPressedMoment(KEY_INPUT_RETURN)) return;
+
+	if (!timer_->hasFinishedCountDown()) return;
 
 	Game::instance().proceedToResult();
 }
