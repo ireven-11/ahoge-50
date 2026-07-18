@@ -64,11 +64,9 @@ void Title::proceed()
 
 void Title::enter()
 {
-	context()->getScore()->init();
 	SetFontSize(50);
 }
 
 void Title::exit()
 {
-	context()->getScore()->init();
 }

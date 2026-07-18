@@ -3,6 +3,7 @@
 
 Score::Score()
 {
+	init();
 }
 
 Score::~Score()
@@ -26,5 +27,5 @@ void Score::decrease(const int value)
 
 void Score::draw()
 {
-	DrawFormatString(50, 150, GetColor(255, 255, 255), "SCORE:%d", currentScore_);
+	DrawFormatString(50, 150, GetColor(225, 25, 25), "SCORE:%d", currentScore_);
 }
