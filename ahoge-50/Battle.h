@@ -7,6 +7,7 @@
 
 class Player;
 class Human;
+class ColliderManager;
 
 class Battle : public SceneBase<SceneContext>
 {
@@ -25,6 +26,7 @@ private:
 
 	std::shared_ptr<Player> player_;
 	std::vector<std::shared_ptr<Human>> humans_;
+	std::unique_ptr<ColliderManager> collider_;
 
 	const char human_value = 10;
 };

@@ -19,13 +19,15 @@ public:
 	void init();
 	void update();
 	void draw();
+	void reloadCrystal();
+
+	const std::shared_ptr<Crystal> getCrystal()const noexcept { return crystal_; }
 
 private:
 	void changeFireAngle();
 	void chargeFirePower();
 	void fire();
 	void move();
-	void reloadCrystal();
 
 	VECTOR position_;
 	int currentFireAngleType_;

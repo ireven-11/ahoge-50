@@ -38,6 +38,10 @@ void Player::update()
 
     crystal_->update();
 
+    if (!crystal_->getIsMoving()) return;
+
+    if (crystal_->getSpeed() > 0.0f) return;
+
     reloadCrystal();
 }
 
@@ -126,10 +130,6 @@ void Player::fire()
 
 void Player::reloadCrystal()
 {
-    if (!crystal_->getIsMoving()) return;
-
-    if (crystal_->getSpeed() > 0.0f) return;
-
     crystal_ = std::make_shared<Crystal>();
     crystal_->setPosition(position_);
     canFire_ = true;

@@ -1,12 +1,14 @@
 #include"DxLibForIreven.h"
 #include"Player.h"
 #include"Human.h"
+#include"ColliderManager.h"
 #include"Battle.h"
 #include"Camera.h"
 
 Battle::Battle(const std::shared_ptr<SceneContext> context)
 	: SceneBase(context),
-	player_(std::make_shared<Player>())
+	player_(std::make_shared<Player>()),
+	collider_(std::make_unique<ColliderManager>())
 {
 	for (size_t i = 0; i < human_value; i++)
 	{
@@ -19,6 +21,8 @@ Battle::Battle(const std::shared_ptr<SceneContext> context)
 Battle::~Battle()
 {
 	humans_.clear();
+	player_ = nullptr;
+	collider_ = nullptr;
 }
 
 void Battle::init()
@@ -34,6 +38,8 @@ void Battle::update()
 	}
 
 	player_->update();
+
+	collider_->update(humans_, player_);
 
 	context()->getCamera()->update();
 }
