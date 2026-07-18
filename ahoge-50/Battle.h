@@ -24,6 +24,7 @@ public:
 	
 private:
 	void proceed();
+	void gageUI();
 
 	int skydome_;
 	std::shared_ptr<Player> player_;

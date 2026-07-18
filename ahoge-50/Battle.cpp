@@ -84,6 +84,8 @@ void Battle::draw()
 
 	timer_->draw();
 
+	gageUI();
+
 	context()->getScore()->draw();
 }
 
@@ -102,4 +104,14 @@ void Battle::enter()
 void Battle::exit()
 {
 
+}
+
+void Battle::gageUI()
+{
+	const auto playerPosition = ConvWorldPosToScreenPos(player_->getPosition());
+	const int gaugeHeight = 200;
+
+	const float firePowerRate = NormalizeBetween<float>(player_->getFirePower(), 0, max_fire_power);
+	DrawBox(playerPosition.x, playerPosition.y, playerPosition.x + 100, playerPosition.y + gaugeHeight, GetColor(225, 25, 25), true);
+	DrawBox(playerPosition.x, playerPosition.y + gaugeHeight * (1.0f - firePowerRate), playerPosition.x + 100, playerPosition.y + gaugeHeight, GetColor(25, 225, 25), true);
 }
