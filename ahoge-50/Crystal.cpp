@@ -42,6 +42,8 @@ void Crystal::update()
 void Crystal::draw()
 {
     MV1DrawModel(modelHandle_);
+
+    DrawSphere3D(position_, collider_radius, 8, GetColor(255, 255, 255), GetColor(255, 255, 255), false);
 }
 
 void Crystal::decideMoveDirection(const VECTOR direction)
@@ -57,18 +59,22 @@ void Crystal::setPosition(const VECTOR position)
 
 void Crystal::setFireSpeed(const float fireSpeed)
 {
-    speed_ = fireSpeed;
+    speed_ = fireSpeed * 0.1f;
 }
 
 void Crystal::move()
 {
     if (!isMoving_) return;
 
-    if (speed_ <= 0.0f) return;
+    speed_ *= deceleration_rate;
 
-    speed_ -= deceleration_rate;
-    VECTOR moveVector = VScale(moveDirection_, speed_);
-    position_ = VAdd(position_, moveVector);
+    if (speed_ < 0.05f)
+    {
+        speed_ = 0.0f;
+        return;
+    }
+
+    position_ = VAdd(position_, VScale(moveDirection_, speed_));
 }
 
 void Crystal::startFire()

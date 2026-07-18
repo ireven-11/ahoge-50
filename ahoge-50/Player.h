@@ -34,7 +34,7 @@ private:
 	int firePower_;
 	bool isCountUpFirePower_;
 
-	const int max_fire_power = 100;
+	const int max_fire_power = 750;
 	const int minimum_fire_power = 0;
 	const float init_position_z = -20.0f;
 };
