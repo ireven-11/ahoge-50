@@ -40,7 +40,7 @@ void Battle::init()
 {
 	player_->init();
 	timer_->init();
-	timer_->startCountDown(5, 0);
+	timer_->startCountDown(60, 0);
 	for (const auto& human : humans_)
 	{
 		human->init();
@@ -83,6 +83,10 @@ void Battle::draw()
 	gageUI();
 
 	context()->getScore()->draw();
+
+	DrawString(50, 1000, "A,D：移動", GetColor(225, 225, 225));
+	DrawString(850, 1000, "SPACE：投げる", GetColor(225, 225, 225));
+	DrawString(1525, 1000, "矢印：角度変更", GetColor(225, 225, 225));
 
 	if (timer_->hasFinishedCountDown())
 	{

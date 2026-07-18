@@ -45,7 +45,7 @@ void Result::draw()
 	else
 	{
 		DrawString(850, 150, "HappyEnd", GetColor(225, 225, 25));
-		DrawString(200, 225, "たくさんの人々がクリスタルを受け取り、皆が幸せになった...!!", GetColor(225, 25, 25));
+		DrawString(200, 225, "たくさんの人々がクリスタルを受け取り、皆が幸せになった...!!", GetColor(225, 225, 25));
 
 		DrawRotaGraphF(init_screen_width * 0.5f, init_screen_height * 0.55f, 0.5, 0.0, happyEndGraph_, true);
 	}
