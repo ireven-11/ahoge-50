@@ -35,8 +35,11 @@ private:
 	bool canFire_;
 	int firePower_;
 	bool isCountUpFirePower_;
+	int ladyHandle_;
 
 	const int max_fire_power = 750;
 	const int minimum_fire_power = 0;
 	const float init_position_z = -20.0f;
+	const float adjust_position = 150.0f;
+	const float max_position = 12.5f;
 };

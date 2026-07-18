@@ -7,12 +7,15 @@
 Player::Player()
     :crystal_(std::make_shared<Crystal>())
 {
+    ladyHandle_ = LoadGraph("graph/ozyosama.png");
+
     init();
 }
 
 Player::~Player()
 {
     crystal_ = nullptr;
+    DeleteGraph(ladyHandle_);
 }
 
 void Player::init()
@@ -48,6 +51,9 @@ void Player::update()
 void Player::draw()
 {
     crystal_->draw();
+
+    const auto tempPosition = ConvWorldPosToScreenPos(position_);
+    DrawRotaGraphF(tempPosition.x - adjust_position, tempPosition.y + adjust_position, 1.5, 0.0, ladyHandle_, true);
 }
 
 void Player::move()
@@ -55,10 +61,20 @@ void Player::move()
     if (InputHandler::instance().getKeyInput()->getKeyHoldNow(KEY_INPUT_D, 0))
     {
         ++position_.x;
+
+        if (position_.x > max_position)
+        {
+            position_.x = max_position;
+        }
     }
     else if (InputHandler::instance().getKeyInput()->getKeyHoldNow(KEY_INPUT_A, 0))
     {
         --position_.x;
+
+        if (position_.x < -max_position)
+        {
+            position_.x = -max_position;
+        }
     }
 }
 
