@@ -32,7 +32,7 @@ private:
 	float rotationAngle_;
 	static int crystalHandle_;
 
-	const float model_scale = 1.0f;
+	const float model_scale = 0.5f;
 	const float collider_radius = 1.0f;
 	const float deceleration_rate = 1.0f;
 	const float rotation_speed = 0.5f;

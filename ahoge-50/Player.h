@@ -36,4 +36,5 @@ private:
 
 	const int max_fire_power = 100;
 	const int minimum_fire_power = 0;
+	const float init_position_z = -20.0f;
 };

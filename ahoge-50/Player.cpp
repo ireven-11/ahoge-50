@@ -17,7 +17,7 @@ Player::~Player()
 
 void Player::init()
 {
-    position_ = VGet(0.0f, 0.0f, 0.0f);
+    position_ = VGet(0.0f, 0.0f, init_position_z);
     currentFireAngleType_ = static_cast<int>(fireAngle::STREET);
     canFire_ = true;
     firePower_ = 0;
@@ -131,6 +131,7 @@ void Player::reloadCrystal()
     if (crystal_->getSpeed() > 0.0f) return;
 
     crystal_ = std::make_shared<Crystal>();
+    crystal_->setPosition(position_);
     canFire_ = true;
     firePower_ = 0;
     isCountUpFirePower_ = true;

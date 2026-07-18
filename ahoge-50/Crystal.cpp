@@ -52,6 +52,7 @@ void Crystal::decideMoveDirection(const VECTOR direction)
 void Crystal::setPosition(const VECTOR position)
 {
     position_ = position;
+    MV1SetPosition(modelHandle_, position_);
 }
 
 void Crystal::setFireSpeed(const float fireSpeed)

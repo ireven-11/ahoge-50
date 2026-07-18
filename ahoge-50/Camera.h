@@ -13,6 +13,6 @@ private:
 	VECTOR position_;
 	VECTOR targetPosition_;
 
-	const float init_Y = 20.0f;
+	const float init_Y = 10.0f;
 	const float init_z = -33.5f;
 };
