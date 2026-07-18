@@ -1,7 +1,7 @@
 #pragma once
 #include"ISphereCollider.h"
 
-constexpr float strong_speed = 5.0f;
+constexpr float strong_speed = 4.5f;
 
 class Crystal : public ISphereCollider
 {

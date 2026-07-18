@@ -116,7 +116,7 @@ void Player::chargeFirePower()
 
     if (isCountUpFirePower_)
     {
-        ++firePower_;
+        firePower_ += charge_power_value;
 
         if (firePower_ > max_fire_power)
         {
@@ -125,7 +125,7 @@ void Player::chargeFirePower()
     }
     else
     {
-        --firePower_;
+        firePower_ -= charge_power_value;
 
         if (firePower_ < minimum_fire_power)
         {

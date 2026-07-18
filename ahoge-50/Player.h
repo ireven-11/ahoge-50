@@ -1,6 +1,8 @@
 #pragma once
 #include<memory>
 
+constexpr int max_fire_power = 100;
+
 class Crystal;
 
 enum class fireAngle
@@ -22,6 +24,8 @@ public:
 	void reloadCrystal();
 
 	const std::shared_ptr<Crystal> getCrystal()const noexcept { return crystal_; }
+	const VECTOR getPosition()const noexcept { return position_; }
+	const int getFirePower()const noexcept { return firePower_; }
 
 private:
 	void changeFireAngle();
@@ -37,9 +41,9 @@ private:
 	bool isCountUpFirePower_;
 	int ladyHandle_;
 
-	const int max_fire_power = 750;
 	const int minimum_fire_power = 0;
 	const float init_position_z = -20.0f;
 	const float adjust_position = 150.0f;
 	const float max_position = 12.5f;
+	const int charge_power_value = 2;
 };
