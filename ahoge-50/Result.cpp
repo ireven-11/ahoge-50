@@ -37,12 +37,20 @@ void Result::draw()
 
 	if (context()->getScore()->getCurrentScore() <= 0)
 	{
-		DrawRotaGraphF(init_screen_width * 0.5f, init_screen_height * 0.5f, 1.0, 0.0, badEndGraph_, true);
+		DrawString(860, 150, "BadEnd", GetColor(25, 25, 225));
+
+		DrawRotaGraphF(init_screen_width * 0.5f, init_screen_height * 0.5f, 0.5, 0.0, badEndGraph_, true);
 	}
 	else
 	{
-		DrawRotaGraphF(init_screen_width * 0.5f, init_screen_height * 0.5f, 1.0, 0.0, happyEndGraph_, true);
+		DrawString(850, 150, "HappyEnd", GetColor(225, 225, 25));
+
+		DrawRotaGraphF(init_screen_width * 0.5f, init_screen_height * 0.5f, 0.5, 0.0, happyEndGraph_, true);
 	}
+
+	DrawString(600, UpDownPositionY(900), "press Enter to return title", GetColor(25, 25, 25));
+
+	context()->getScore()->draw();
 }
 
 void Result::proceed()
@@ -54,7 +62,7 @@ void Result::proceed()
 
 void Result::enter()
 {
-	context()->getScore()->init();
+	
 }
 
 void Result::exit()
