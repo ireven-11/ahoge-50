@@ -1,6 +1,7 @@
 #include"EffekseerForDXLib/DxLib.h"
 #include"Player.h"
 #include"Battle.h"
+#include"Camera.h"
 
 Battle::Battle(const std::shared_ptr<SceneContext> context)
 	: SceneBase(context),
@@ -23,6 +24,8 @@ void Battle::init()
 void Battle::update()
 {
 	player_->update();
+
+	context()->getCamera()->update();
 }
 
 void Battle::draw()

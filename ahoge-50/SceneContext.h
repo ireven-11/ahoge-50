@@ -1,5 +1,6 @@
 #pragma once
 #include<memory>
+#include"Camera.h"
 
 //playerなどの色々なシーンで使用するかもしれないオブジェクトを持つクラス
 //オブジェクトを呼び出すことはできるが変更はできない
@@ -8,14 +9,15 @@ class SceneContext final
 public:
 	SceneContext()
 	{
-		
+		camera_ = std::make_shared<Camera>();
 	}
 	~SceneContext()
 	{
-		
+		camera_ = nullptr;
 	}
 	
+	const std::shared_ptr<Camera> getCamera()const noexcept { return camera_; }
 
 private:
-	
+	std::shared_ptr<Camera> camera_;
 };
