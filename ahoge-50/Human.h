@@ -26,6 +26,6 @@ private:
 
 	const float collider_radius = 1.0f;
 	const float init_position_x = 50.0f;
-	const int	random_position_z = 20;
+	const int	random_position_z = 30;
 	const int	random_speed = 5;
 };
