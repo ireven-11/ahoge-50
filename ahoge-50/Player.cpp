@@ -61,18 +61,28 @@ void Player::changeFireAngle()
     if (InputHandler::instance().getKeyInput()->getKeyPressedMoment(KEY_INPUT_RIGHT))
     {
         currentFireAngleType_ = static_cast<int>(fireAngle::RIGHT);
-        const auto fireDirection = VNorm(VGet(1.0f, 0.0f, 1.0f));
-        crystal_->decideMoveDirection(fireDirection);
     }
     else if (InputHandler::instance().getKeyInput()->getKeyPressedMoment(KEY_INPUT_LEFT))
     {
         currentFireAngleType_ = static_cast<int>(fireAngle::LEFT);
-        const auto fireDirection = VNorm(VGet(-1.0f, 0.0f, 1.0f));
-        crystal_->decideMoveDirection(fireDirection);
     }
     else if (InputHandler::instance().getKeyInput()->getKeyPressedMoment(KEY_INPUT_UP))
     {
         currentFireAngleType_ = static_cast<int>(fireAngle::STREET);
+    }
+
+    if (currentFireAngleType_ == static_cast<int>(fireAngle::RIGHT))
+    {
+        const auto fireDirection = VNorm(VGet(1.0f, 0.0f, 1.0f));
+        crystal_->decideMoveDirection(fireDirection);
+    }
+    else if (currentFireAngleType_ == static_cast<int>(fireAngle::LEFT))
+    {
+        const auto fireDirection = VNorm(VGet(-1.0f, 0.0f, 1.0f));
+        crystal_->decideMoveDirection(fireDirection);
+    }
+    else if (currentFireAngleType_ == static_cast<int>(fireAngle::STREET))
+    {
         const auto fireDirection = VNorm(VGet(0.0f, 0.0f, 1.0f));
         crystal_->decideMoveDirection(fireDirection);
     }

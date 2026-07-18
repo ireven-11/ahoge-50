@@ -62,9 +62,11 @@ void Crystal::move()
 {
     if (!isMoving_) return;
 
+    if (speed_ <= 0.0f) return;
+
     speed_ -= deceleration_rate;
     VECTOR moveVector = VScale(moveDirection_, speed_);
-    VAdd(position_, moveVector);
+    position_ = VAdd(position_, moveVector);
 }
 
 void Crystal::startFire()
