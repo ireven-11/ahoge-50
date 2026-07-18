@@ -34,6 +34,7 @@ void Crystal::init()
 void Crystal::update()
 {
     move();
+    rotation();
 
     MV1SetPosition(modelHandle_, position_);
 }
@@ -72,4 +73,14 @@ void Crystal::move()
 void Crystal::startFire()
 {
     isMoving_ = true;
+}
+
+void Crystal::rotation()
+{
+    rotationAngle_ += rotation_speed;
+    if (rotationAngle_ >= DX_PI_F)
+    {
+        rotationAngle_ = 0.0f;
+    }
+    MV1SetRotationXYZ(modelHandle_, VGet(0.0f, rotationAngle_, 0.0f));
 }
