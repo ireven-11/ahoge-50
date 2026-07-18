@@ -26,7 +26,6 @@ private:
 	void proceed();
 
 	int skydome_;
-	int score_;
 	std::shared_ptr<Player> player_;
 	std::vector<std::shared_ptr<Human>> humans_;
 	std::unique_ptr<ColliderManager> collider_;

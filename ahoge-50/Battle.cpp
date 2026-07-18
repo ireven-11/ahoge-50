@@ -5,6 +5,9 @@
 #include"Timer.h"
 #include"Battle.h"
 #include"Camera.h"
+#include"InputHandler.h"
+#include"KeyInput.h"
+#include"Game.h"
 
 Battle::Battle(const std::shared_ptr<SceneContext> context)
 	: SceneBase(context),
@@ -35,16 +38,23 @@ Battle::~Battle()
 
 void Battle::init()
 {
-	score_ = 0;
 	player_->init();
 	timer_->init();
 	timer_->startCountDown(60, 0);
+	for (const auto& human : humans_)
+	{
+		human->init();
+	}
 }
 
 void Battle::update()
 {
 	timer_->update();
-	if (timer_->hasFinishedCountDown()) return;
+	if (timer_->hasFinishedCountDown())
+	{
+		proceed();
+		return;
+	}
 
 	for (const auto& human : humans_)
 	{
@@ -78,12 +88,14 @@ void Battle::draw()
 
 void Battle::proceed()
 {
-	
+	if (!InputHandler::instance().getKeyInput()->getKeyPressedMoment(KEY_INPUT_RETURN)) return;
+
+	Game::instance().proceedToResult();
 }
 
 void Battle::enter()
 {
-	
+	init();
 }
 
 void Battle::exit()

@@ -2,6 +2,7 @@
 #include"FPS.h"
 #include"Title.h"
 #include"Battle.h"
+#include"Result.h"
 #include"Game.h"
 #include"InputHandler.h"
 
@@ -11,6 +12,7 @@ Game::Game()
 {
 	titleScene_ = std::make_shared<Title>(context_);
 	battleScene_ = std::make_shared<Battle>(context_);
+	resultScene_ = std::make_shared<Result>(context_);
 
 	currentScene_ = titleScene_;
 }
@@ -60,5 +62,12 @@ void Game::proceedToTitle()
 {
 	currentScene_->exit();
 	currentScene_ = titleScene_;
+	currentScene_->enter();
+}
+
+void Game::proceedToResult()
+{
+	currentScene_->exit();
+	currentScene_ = resultScene_;
 	currentScene_->enter();
 }

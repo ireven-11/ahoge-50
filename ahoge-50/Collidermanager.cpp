@@ -29,7 +29,7 @@ void ColliderManager::update(const std::vector<std::shared_ptr<Human>>& humans, 
 
 		if (!isHiting) continue;
 
-		if (crystal->getSpeed() < strong_speed)
+ 		if (crystal->getSpeed() < strong_speed)
 		{
 			score->add(add_score);
 		}

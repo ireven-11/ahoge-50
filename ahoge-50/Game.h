@@ -8,6 +8,7 @@
 class FPS;
 class Title;
 class Battle;
+class Result;
 
 class Game : public Singleton<Game>
 {
@@ -17,6 +18,7 @@ public:
 	void update();
 	void proceedToBattle();
 	void proceedToTitle();
+	void proceedToResult();
 
 private:
 	//Singletonのフレンドに宣言してコンストラクタにアクセス許可
@@ -29,4 +31,5 @@ private:
 	std::shared_ptr<SceneContext> context_;
 	std::shared_ptr<Title> titleScene_;
 	std::shared_ptr<Battle> battleScene_;
+	std::shared_ptr<Result> resultScene_;
 };
