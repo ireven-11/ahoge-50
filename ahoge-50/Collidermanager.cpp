@@ -32,6 +32,7 @@ void ColliderManager::update(const std::vector<std::shared_ptr<Human>>& humans, 
  		if (crystal->getSpeed() < strong_speed)
 		{
 			score->add(add_score);
+			human->beSmile(human->getSpherePosition());
 		}
 		else
 		{

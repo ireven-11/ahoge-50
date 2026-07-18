@@ -114,7 +114,10 @@ void Battle::enter()
 
 void Battle::exit()
 {
-
+	for (const auto human : humans_)
+	{
+		human->initSmile();
+	}
 }
 
 void Battle::gageUI()

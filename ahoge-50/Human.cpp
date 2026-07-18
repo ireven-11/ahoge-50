@@ -14,6 +14,9 @@ Human::Human()
 	const float modelScale = 0.05f;
 	MV1SetScale(modelHandle_, VGet(modelScale, modelScale, modelScale));
 
+
+	smileGraph_ = LoadGraph("graph/smile.png");
+	initSmile();
 	init();
 }
 
@@ -43,7 +46,7 @@ void Human::init()
 	speed_ = static_cast<float>(GetRand(random_speed) + 1) * 0.1f;
 	currentAnimCount_ = 0.0f;
 	maxPlayingAnimSpeed_ = 0.0f;
-
+	
 	//最初からアニメーションを流しっぱなしにしたいので初期化でアタッチする
 	attachAnimIndex_ = MV1AttachAnim(modelHandle_, 1);
 	maxPlayingAnimSpeed_ = MV1GetAttachAnimTotalTime(modelHandle_, attachAnimIndex_);
@@ -54,6 +57,7 @@ void Human::update()
 	move();
 	anim();
 	respawn();
+	smileUpdate();
 
 	MV1SetPosition(modelHandle_, position_);
 }
@@ -61,6 +65,11 @@ void Human::update()
 void Human::draw()
 {
 	MV1DrawModel(modelHandle_);
+
+	if (isSmile_)
+	{
+		DrawExtendGraph3D(smilePosition_.x, smilePosition_.y, smilePosition_.z, 0.01, 0.01, smileGraph_, true);
+	}
 
 	//DrawSphere3D(position_, collider_radius, 8, GetColor(255, 255, 255), GetColor(255, 255, 255), false);
 }
@@ -105,4 +114,30 @@ void Human::anim()
 	}
 
 	MV1SetAttachAnimTime(modelHandle_, attachAnimIndex_, currentAnimCount_);
+}
+
+void Human::beSmile(const VECTOR smilePosition)
+{
+	isSmile_ = true;
+	smilePosition_ = smilePosition;
+}
+
+void Human::initSmile()
+{
+	smileCount_ = 0;
+	isSmile_ = false;
+	smilePosition_ = VGet(0.0f, 0.0f, 0.0f);
+}
+
+void Human::smileUpdate()
+{
+	if (!isSmile_) return;
+
+	smilePosition_.y += rise_smile;
+
+	++smileCount_;
+	if (smileCount_ > max_smile_count)
+	{
+		initSmile();
+	}
 }
