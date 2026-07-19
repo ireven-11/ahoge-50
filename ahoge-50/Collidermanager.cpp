@@ -4,6 +4,7 @@
 #include"Score.h"
 #include"ColliderManager.h"
 #include"Crystal.h"
+#include"SoundManager.h"
 
 ColliderManager::ColliderManager()
 {
@@ -19,7 +20,8 @@ void ColliderManager::init()
 
 }
 
-void ColliderManager::update(const std::vector<std::shared_ptr<Human>>& humans, const std::shared_ptr<Player>& player, const std::shared_ptr<Score>& score)
+void ColliderManager::update(const std::vector<std::shared_ptr<Human>>& humans, const std::shared_ptr<Player>& player,
+	const std::shared_ptr<Score>& score, const std::shared_ptr<SoundManager>& soundManager)
 {
 	const auto crystal = player->getCrystal();
 	for (const auto& human : humans)
@@ -33,10 +35,12 @@ void ColliderManager::update(const std::vector<std::shared_ptr<Human>>& humans, 
 		{
 			score->add(add_score);
 			human->beSmile(human->getSpherePosition());
+			soundManager->startSound("giveSE", false, true);
 		}
 		else
 		{
 			score->decrease(decrease_score);
+			soundManager->startSound("stickSE", false, true);
 		}
 
 		player->reloadCrystal();

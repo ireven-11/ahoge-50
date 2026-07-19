@@ -12,6 +12,8 @@ enum class fireAngle
 	STREET
 };
 
+class SoundManager;
+
 class Player
 {
 public:
@@ -19,7 +21,7 @@ public:
 	~Player();
 
 	void init();
-	void update();
+	void update(const std::shared_ptr<SoundManager>& soundManager);
 	void draw();
 	void reloadCrystal();
 
@@ -30,7 +32,7 @@ public:
 private:
 	void changeFireAngle();
 	void chargeFirePower();
-	void fire();
+	void fire(const std::shared_ptr<SoundManager>& soundManager);
 	void move();
 
 	VECTOR position_;

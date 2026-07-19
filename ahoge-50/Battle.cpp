@@ -58,9 +58,9 @@ void Battle::update()
 		human->update();
 	}
 
-	player_->update();
+	player_->update(context()->getSoundManager());
 
-	collider_->update(humans_, player_, context()->getScore());
+	collider_->update(humans_, player_, context()->getScore(), context()->getSoundManager());
 
 	context()->getCamera()->update();
 
@@ -105,6 +105,15 @@ void Battle::proceed()
 	if (!timer_->hasFinishedCountDown()) return;
 
 	Game::instance().proceedToResult();
+
+	if (context()->getScore()->getCurrentScore() <= 0)
+	{
+		context()->getSoundManager()->startSound("badEndSE");
+	}
+	else
+	{
+		context()->getSoundManager()->startSound("happyEndSE");
+	}
 }
 
 void Battle::enter()

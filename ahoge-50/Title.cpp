@@ -17,6 +17,8 @@ Title::Title(const std::shared_ptr<SceneContext>& context)
 	MV1SetScale(crystalHandle_, VGet(crystal_scale, crystal_scale, crystal_scale));
 
 	init();
+
+	context->getSoundManager()->startSound("bgm", true);
 }
 
 Title::~Title()

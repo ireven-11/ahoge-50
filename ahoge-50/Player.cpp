@@ -1,5 +1,6 @@
 #include"EffekseerForDXLib/DxLib.h"
 #include"Crystal.h"
+#include"SoundManager.h"
 #include"Player.h"
 #include"InputHandler.h"
 #include"KeyInput.h"
@@ -27,7 +28,7 @@ void Player::init()
     isCountUpFirePower_ = true;
 }
 
-void Player::update()
+void Player::update(const std::shared_ptr<SoundManager>& soundManager)
 {
     move();
 
@@ -36,7 +37,7 @@ void Player::update()
         crystal_->setPosition(position_);
         changeFireAngle();
         chargeFirePower();
-        fire();
+        fire(soundManager);
     }
 
     crystal_->update();
@@ -136,12 +137,13 @@ void Player::chargeFirePower()
     crystal_->setFireSpeed(static_cast<float>(firePower_));
 }
 
-void Player::fire()
+void Player::fire(const std::shared_ptr<SoundManager>& soundManager)
 {
     if (!InputHandler::instance().getKeyInput()->getKeyReleasedMoment(KEY_INPUT_SPACE)) return;
 
     canFire_ = false;
     crystal_->startFire();
+    soundManager->startSound("throwSE", false, true);
 }
 
 void Player::reloadCrystal()
